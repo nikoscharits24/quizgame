@@ -8,8 +8,7 @@ public class QuizManager : MonoBehaviour
     public Text questionText;
     public Button[] answerButtons;
 
-    private string correctAnswer = "YourCorrectAnswer"; // Replace with the correct answer
-
+    private string correctAnswer = "YourCorrectAnswer"; 
     public void StartQuiz()
     {
         quizWindow.SetActive(true);

@@ -2,13 +2,13 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #		 /
-Quiz_Game/[Ll]ibrary/
-Quiz_Game/[Tt]emp/
-Quiz_Game/[Oo]bj/
-Quiz_Game/[Bb]uild/
-Quiz_Game/[Bb]uilds/
-Quiz_Game/[Ll]ogs/
-Quiz_Game/[Uu]ser[Ss]ettings/
+quizProject1/[Ll]ibrary/
+quizProject1/[Tt]emp/
+quizProject1/[Oo]bj/
+quizProject1/[Bb]uild/
+quizProject1/[Bb]uilds/
+quizProject1/[Ll]ogs/
+quizProject1/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

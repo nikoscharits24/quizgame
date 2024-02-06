@@ -10,8 +10,5 @@ public class QuizPopUp : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-    private void Update()
-    {
-        gameObject.SetActive(true);
-    }
+    
 }

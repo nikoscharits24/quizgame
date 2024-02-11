@@ -2,18 +2,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 
 
 public class test1 : MonoBehaviour
 {
-
+    public static test1 Instance;
     public float proximityThreshold = 2f;
     public QuizPopUp quizPopUp;
     public int targetScore;
     public int currentScore;
     public Text scoreText;
     public Text targetScoreText;
+    public Button[] buttons;
 
 
 
@@ -98,19 +98,36 @@ public class test1 : MonoBehaviour
 
     public void OnButtonClick(int answerIndex)
     {
+        foreach (Button button in buttons)
+        {
+            button.GetComponent<Button>().interactable = true;
+        }
+
+       
+
         bool isCorrect = quizPopUp.CheckAnswer(answerIndex);
-        // Perform further actions based on the validation result
         if (isCorrect)
         {
-            // Handle correct answer
-            Debug.Log("Correct answer selected!");
-            // Add code here to increment score or move to the next question
+            //correct answer +points
+            currentScore++;
+            MyScore();
+
+            foreach (Button button in buttons)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
+
         }
         else
         {
-            // Handle incorrect answer
+            //incorrect answer no points
+           
             Debug.Log("Incorrect answer selected!");
-            // Add code here to provide feedback or take other actions
+            foreach (Button button in buttons)
+            {
+                button.GetComponent<Button>().interactable = false;
+            }
+
         }
     }
 }

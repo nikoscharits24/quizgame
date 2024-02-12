@@ -14,26 +14,39 @@ public class test1 : MonoBehaviour
     public Text scoreText;
     public Text targetScoreText;
     public Button[] buttons;
+    private bool[] questionAnswered;
+    public int counter;
+    public Texture2D cursorTexture;
 
+    //screens
+    public GameObject winScreen;
+    public GameObject loseScreen;
 
-
+    
 
 
     void Start()
     {
         InitializeGame();
         MyScore();
-        
+
+        Cursor.visible = false;
+        if (cursorTexture != null)
+        {
+            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+        }
+
     }
 
     void InitializeGame()
     {
         GenerateTargetScore();
+        questionAnswered = new bool[quizPopUp.questions.Length];
     }
 
     void GenerateTargetScore()
     {
-        targetScore = 5;
+        targetScore = 3;
     }
 
 
@@ -52,7 +65,14 @@ public class test1 : MonoBehaviour
         if (currentScore == targetScore)
         {
             Debug.Log("You win!");
-
+            quizPopUp.gameObject.SetActive(false);
+            ShowWinScreen();
+        }
+        if (counter == 3 && currentScore < targetScore)
+        {
+            Debug.Log("You lose");
+            quizPopUp.gameObject.SetActive(false);
+            ShowLoseScreen();
         }
 
     }
@@ -80,6 +100,7 @@ public class test1 : MonoBehaviour
     void Update()
     {
         OnInteraction();
+        
     }
 
     public void MyScore()
@@ -93,41 +114,39 @@ public class test1 : MonoBehaviour
         return Vector3.Distance(transform.position, Camera.main.transform.position) < proximityThreshold;
     }
 
+    //screen functions
+    void ShowWinScreen()
+    {
+        winScreen.SetActive(true);
+    }
+    public void DeleteWinScreen()
+    {
+        winScreen.SetActive(false);
+    }
+    void ShowLoseScreen()
+    {
+        loseScreen.SetActive(true);
+    }
+
 
     //handle quiz answers
 
     public void OnButtonClick(int answerIndex)
     {
-        foreach (Button button in buttons)
+        counter++;
+        CheckCurrentScore(currentScore);
+
+        if (!questionAnswered[quizPopUp.currentQuestionIndex]) 
         {
-            button.GetComponent<Button>().interactable = true;
-        }
-
-       
-
-        bool isCorrect = quizPopUp.CheckAnswer(answerIndex);
-        if (isCorrect)
-        {
-            //correct answer +points
-            currentScore++;
-            MyScore();
-
-            foreach (Button button in buttons)
+            bool isCorrect = quizPopUp.CheckAnswer(answerIndex);
+            if (isCorrect)
             {
-                button.GetComponent<Button>().interactable = false;
+                currentScore++;               
+                MyScore();
+                
             }
-
-        }
-        else
-        {
-            //incorrect answer no points
-           
-            Debug.Log("Incorrect answer selected!");
-            foreach (Button button in buttons)
-            {
-                button.GetComponent<Button>().interactable = false;
-            }
-
+            questionAnswered[quizPopUp.currentQuestionIndex] = true; 
+            
         }
     }
 }

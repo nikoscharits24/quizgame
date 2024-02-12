@@ -17,8 +17,8 @@ public class QuizPopUp : MonoBehaviour
 
 
     //questions and answers
-    private int currentQuestionIndex = 0;
-    private string[] questions = {
+    public int currentQuestionIndex = 0;
+    public string[] questions = {
         "What is the capital of France?",
         "Which of these is not a programming language?",
         "According to greek mythology, who is the brother of Zeus?"
@@ -57,6 +57,8 @@ public class QuizPopUp : MonoBehaviour
             for (int i = 0; i < answerTexts.Length; i++)
             {
                 answerTexts[i].text = answers[currentQuestionIndex][i];
+
+
 
             }
           

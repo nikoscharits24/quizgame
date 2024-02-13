@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Quit : MonoBehaviour
 {
+
+
+    //audio
     public AudioSource backgroundMusic;
     public AudioSource audioSource;
     public AudioClip ButtonClick;
+
+    //image
     public Texture2D cursorTexture;
     public VideoPlayer videoPlayer;
 
@@ -16,7 +21,7 @@ public class Quit : MonoBehaviour
     void Start()
     {
 
-        Cursor.visible = false;
+        Cursor.visible = true;
         if (cursorTexture != null)
         {
             Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);

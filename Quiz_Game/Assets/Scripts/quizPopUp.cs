@@ -7,6 +7,11 @@ public class QuizPopUp : MonoBehaviour
 {
     public TextMeshProUGUI questionText;
     public TextMeshProUGUI[] answerTexts;
+
+    //audio
+    public AudioSource audioSource;
+    public AudioClip CorrectAnsw;
+    public AudioClip WrongAnsw;
     
 
 
@@ -78,11 +83,13 @@ public class QuizPopUp : MonoBehaviour
         if (selectedAnswerIndex == correctAnswers[currentQuestionIndex])
         {
             Debug.Log("Correct!");
+            audioSource.PlayOneShot(CorrectAnsw);
             return true;
         }
         else
         {
             Debug.Log("Incorrect!");
+            audioSource.PlayOneShot(WrongAnsw);
             return false;
         }
     }

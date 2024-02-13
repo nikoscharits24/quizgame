@@ -1097,8 +1097,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_Intensity: 8
+  m_Color: {r: 1, g: 0.66643906, b: 0.0141509175, a: 1}
+  m_Intensity: 1
   m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -9983,7 +9983,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b669a57f996586e4f8abe58183b25d36, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.581
+  m_Volume: 0.603
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -19064,8 +19064,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_Intensity: 8
+  m_Color: {r: 0.9339623, g: 0.67510605, b: 0.066082224, a: 1}
+  m_Intensity: 1
   m_Range: 4
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -20565,6 +20565,9 @@ MonoBehaviour:
   - {fileID: 816450470}
   - {fileID: 43346241}
   - {fileID: 771375104}
+  audioSource: {fileID: 614391928}
+  CorrectAnsw: {fileID: 8300000, guid: 36d156cdc8b217f40b2df0bbdeafce68, type: 3}
+  WrongAnsw: {fileID: 8300000, guid: 671a3244a8ed40146a54946aca957dfa, type: 3}
   currentQuestionIndex: 0
   questions:
   - What is the capital of France?
@@ -27644,6 +27647,8 @@ MonoBehaviour:
   backgroundMusic: {fileID: 0}
   audioSource: {fileID: 0}
   ButtonClick: {fileID: 0}
+  cursorTexture: {fileID: 0}
+  videoPlayer: {fileID: 0}
 --- !u!4 &1784622092
 Transform:
   m_ObjectHideFlags: 0
@@ -32019,8 +32024,14 @@ MonoBehaviour:
   - {fileID: 649665142}
   counter: 0
   cursorTexture: {fileID: 2800000, guid: e9d588698d08c4547bafaa8c6141d372, type: 3}
+  lights:
+  - {fileID: 1210188438}
+  - {fileID: 121184299}
+  door: {fileID: 583464763}
   winScreen: {fileID: 832229398}
   loseScreen: {fileID: 749412428}
+  openDoor: {fileID: 8300000, guid: 86805dd32eaf9b74b8a8c9d2ae90748b, type: 3}
+  audioSource: {fileID: 614391928}
 --- !u!1 &1989695916
 GameObject:
   m_ObjectHideFlags: 0

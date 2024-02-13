@@ -17,10 +17,17 @@ public class test1 : MonoBehaviour
     private bool[] questionAnswered;
     public int counter;
     public Texture2D cursorTexture;
+    public Light[] lights;
+    public GameObject door;
 
     //screens
     public GameObject winScreen;
     public GameObject loseScreen;
+
+    //audio
+    public AudioClip openDoor;
+    public AudioSource audioSource;
+    
 
     
 
@@ -62,13 +69,14 @@ public class test1 : MonoBehaviour
     {
 
         // implement win screen
-        if (currentScore == targetScore)
+        if (counter == 3 && currentScore == targetScore)
         {
             Debug.Log("You win!");
             quizPopUp.gameObject.SetActive(false);
             ShowWinScreen();
+            ActivateLightsAndDoor();
         }
-        if (counter == 3 && currentScore < targetScore)
+         else if (counter == 3 && currentScore < targetScore)
         {
             Debug.Log("You lose");
             quizPopUp.gameObject.SetActive(false);
@@ -134,7 +142,7 @@ public class test1 : MonoBehaviour
     public void OnButtonClick(int answerIndex)
     {
         counter++;
-        CheckCurrentScore(currentScore);
+        
 
         if (!questionAnswered[quizPopUp.currentQuestionIndex]) 
         {
@@ -145,8 +153,25 @@ public class test1 : MonoBehaviour
                 MyScore();
                 
             }
-            questionAnswered[quizPopUp.currentQuestionIndex] = true; 
-            
+            questionAnswered[quizPopUp.currentQuestionIndex] = true;
+            CheckCurrentScore(currentScore);
+        }
+    }
+
+
+    void ActivateLightsAndDoor()
+    {
+        foreach (Light light in lights)
+        {
+            light.enabled = true;
+            light.intensity = 10f;
+            light.color = Color.green;
+        }
+
+        if (door != null)
+        {
+            door.SetActive(false); // Open the door
+            audioSource.PlayOneShot(openDoor);
         }
     }
 }
